@@ -28,32 +28,37 @@ plastic_waste <- plastic_waste %>%
 ### Exercise 1
 
 ```{r plastic-waste-continent}
-# insert code here
+ggplot(plastic_waste, aes(x=plastic_waste_per_cap)) +
+  geom_histogram(binwidth = 0.2) +
+  facet_wrap(~continent)
 ```
 
 ### Exercise 2
 
 ```{r plastic-waste-density}
-# insert code here
+ggplot(plastic_waste, aes(x = plastic_waste_per_cap, color = continent, fill = continent)) +
+  geom_density(alpha = 0.5)
 ```
 
-Réponse à la question...
+Les réglages dans aes() sont des modifications par rapports aux variables des données. Dans notre cas, "alpha" ne modifie pas la transparence par rapport à une variable, mais de tout le graphique. Nous modifions seulement une constante, donc c'est dans geom_density() que ça se passe.
 
 ### Exercise 3
 
 Boxplot:
 
 ```{r plastic-waste-boxplot}
-# insert code here
+ggplot(plastic_waste, aes(x = continent, y = plastic_waste_per_cap)) +
+  geom_boxplot()
 ```
 
 Violin plot:
 
 ```{r plastic-waste-violin}
-# insert code here
+ggplot(plastic_waste, aes(x = continent, y = plastic_waste_per_cap)) +
+  geom_violin()
 ```
 
-Réponse à la question...
+Les "violin plots" permettent de voir une meilleure distributivité par continent que les boxplots. 
 
 ### Exercise 4
 
